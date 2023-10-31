@@ -1,0 +1,19 @@
+{
+  "name": "cursocoderback",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "route": "^0.2.5",
+    "routes": "^2.1.0"
+  }
+}
