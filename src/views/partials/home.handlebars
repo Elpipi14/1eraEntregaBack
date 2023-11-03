@@ -1,0 +1,29 @@
+    <h2>Socket.io Products</h2>
+    <div class="list_container">
+        <h2>Agregar Producto</h2>
+        <form id="form" action="procesar_producto.php" method="post" enctype="multipart/form-data">
+            <label for="id">ID:</label>
+            <input type="text" name="id" id="id" required>
+
+            <label for="title">Títle:</label>
+            <input type="text" name="title" id="title" required>
+
+            <label for="price">Price:</label>
+            <input type="number" name="price" id="price" required>
+
+            <label for="stock">Stock:</label>
+            <input type="number" name="stock" id="stock" required>
+
+            <label for="image">URL img:</label>
+            <input type="url" name="image" id="image" required>
+
+            <input type="submit" value="add product">
+        </form>
+    </div>
+
+    <h2>List Products</h2>
+
+    <div id="products"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/index.js"></script>

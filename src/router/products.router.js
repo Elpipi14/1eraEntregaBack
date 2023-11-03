@@ -30,8 +30,7 @@ router.post('/', productValidation, async (req, res) => {
         console.log(product);
         const productCreated = await productsManager.createProduct(product);
         const { title, description, code, price, status, stock, category, thumbnails } = productCreated;
-        const productResponse = { title, description, code, price, status, stock, category, thumbnails };
-        res.status(200).json(productResponse);
+        res.status(200).json(productCreated);
     } catch (error) {
         res.status(500).json(error.menssage);
     }
