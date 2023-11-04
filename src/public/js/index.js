@@ -12,6 +12,7 @@ const inputTitle = document.getElementById('title');
 const inputPrice = document.getElementById('price');
 const inputStock = document.getElementById('stock');
 const inputImage = document.getElementById('image');
+const inputCategory = document.getElementById('category');
 
 const listenProducts = document.getElementById('Products');
 
@@ -22,7 +23,8 @@ form.onsubmit = (e) => {
     const price = inputPrice.value;
     const stock = inputStock.value;
     const image = inputImage.value;
-    const product = { id, title, price, stock, image };
+    const category = inputCategory.value;
+    const product = { id, title, price, stock, image, category };
     socketClient.emit('newProducts', product);
 }
 
@@ -33,14 +35,25 @@ socketClient.on('arrayProducts', (productsArrays) => {
         infoProducts +=
             ` 
             <div class="card" style="width: 18rem;">
-                <img src="${e.image}" class="card-img-top" alt="${e.title}">
-                <div class="card-body">
+                <img src="${e.image}" class="mx-auto img-thumbnail img" alt="${e.title}">
+                <div class="card_info card-body">
                     <h2 class="card-text">${e.title}</h2>
-                    <p class="card-text">${e.id}</p>
-                    <p class="card-text">$${e.price}<</p>
-                    <p class="card-text">Stock:${e.stock}</p>
+                    <p class="card-text">ID: ${e.id}</p>
+                    <p class="card-text">Price: ${e.price}</p>
+                    <p class="card-text">Stocks: ${e.stock}</p>
+                    <p class="card-text">Category: ${e.category}</p>
                 </div>
+                <div class="count">
+                    <div class="number_count">
+                        <button class="btn cart px-auto num cont">-</button>
+                        <h4 class="number"> 0 </h4>
+                        <button class="btn cart px-auto num cont">+</button>
+                    </div>
+                    <button class="btn cart px-auto add">Add Cart</button>
+                </div>
+            
             </div>
+           
             `
     });
     products.innerHTML = infoProducts;
