@@ -29,6 +29,14 @@ form.onsubmit = (e) => {
 }
 
 
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('delete')) {
+        const productId = event.target.getAttribute('id');
+        socketClient.emit('deleteProduct', productId);
+    }
+});
+
+
 socketClient.on('arrayProducts', (productsArrays) => {
     let infoProducts = ``;
     productsArrays.forEach(e => {
@@ -49,7 +57,7 @@ socketClient.on('arrayProducts', (productsArrays) => {
                         <h4 class="number"> 0 </h4>
                         <button class="btn cart px-auto num cont">+</button>
                     </div>
-                    <button class="btn cart px-auto add">Add Cart</button>
+                    <button class="btn cart px-auto delete" id="${e.id}">Eliminar</button>
                 </div>
             
             </div>

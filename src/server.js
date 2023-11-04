@@ -7,7 +7,6 @@ import viewRouter from './router/views.router.js';
 import productsRouter from './router/products.router.js';
 import cartsRouter from './router/cart.router.js'
 
-
 const app = express();
 
 app.use(express.json());
@@ -24,7 +23,7 @@ const httpSever = app.listen(8080, () => {
 
 const socketServer = new Server(httpSever);
 
-const products = [];
+let products = [];
 
 socketServer.on('connection', (socket) => {
     console.log(`Usuario Conectado ${socket.id}`);
@@ -37,16 +36,20 @@ socketServer.on('connection', (socket) => {
         products.push(product);
         socketServer.emit('arrayProducts', products);
     })
+
+    socket.on('deleteProduct', (productId) => {
+        products = products.filter(product => product.id !== productId);
+        socketServer.emit('arrayProducts', products);
+    });
 })
 
-app.use('/', viewRouter);
 
+app.use('/', viewRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 
 
-// const port = 8080;
-// app.listen(port, () => console.log(`Server ok on port ${port}`));
+
 
 
 
