@@ -52,12 +52,8 @@ socketClient.on('arrayProducts', (productsArrays) => {
                     <p class="card-text">Category: ${e.category}</p>
                 </div>
                 <div class="count">
-                    <div class="number_count">
-                        <button class="btn cart px-auto num cont">-</button>
-                        <h4 class="number"> 0 </h4>
-                        <button class="btn cart px-auto num cont">+</button>
-                    </div>
-                    <button class="btn cart px-auto delete" id="${e.id}">Eliminar</button>
+                    <button class="btn cart px-auto">Add to Product</button>
+                    <button class="btn cart px-auto delete" id="${e.id}">Delete</button>
                 </div>
             
             </div>
@@ -66,6 +62,9 @@ socketClient.on('arrayProducts', (productsArrays) => {
     });
     products.innerHTML = infoProducts;
 });
+
+
+
 
 
 

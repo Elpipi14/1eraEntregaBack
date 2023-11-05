@@ -23,13 +23,11 @@ const httpSever = app.listen(8080, () => {
 
 const socketServer = new Server(httpSever);
 
-let products = [];
 
+let products = [];
 socketServer.on('connection', (socket) => {
     console.log(`Usuario Conectado ${socket.id}`);
-
     socket.on('disconnect', () => console.log(`Usuario desconectado`));
-
     socket.emit('saludo desde back', 'Bienvenido a WebSocket')
 
     socket.on('newProducts', (product) => {
@@ -42,7 +40,6 @@ socketServer.on('connection', (socket) => {
         socketServer.emit('arrayProducts', products);
     });
 })
-
 
 app.use('/', viewRouter);
 app.use('/api/products', productsRouter);
