@@ -6,7 +6,7 @@ import { Server } from "socket.io"
 import viewRouter from './router/views.router.js';
 import productsRouter from './router/products.router.js';
 import cartsRouter from './router/cart.router.js'
-
+import { addProduct, deleteProduct, getProducts } from './manager/ProductsData.js'
 const app = express();
 
 app.use(express.json());
@@ -23,21 +23,19 @@ const httpSever = app.listen(8080, () => {
 
 const socketServer = new Server(httpSever);
 
-
-let products = [];
 socketServer.on('connection', (socket) => {
     console.log(`Usuario Conectado ${socket.id}`);
     socket.on('disconnect', () => console.log(`Usuario desconectado`));
     socket.emit('saludo desde back', 'Bienvenido a WebSocket')
 
     socket.on('newProducts', (product) => {
-        products.push(product);
-        socketServer.emit('arrayProducts', products);
-    })
+        addProduct(product);
+        socketServer.emit('arrayProducts', getProducts()); 
+    });
 
     socket.on('deleteProduct', (productId) => {
-        products = products.filter(product => product.id !== productId);
-        socketServer.emit('arrayProducts', products);
+        deleteProduct(productId); // Llama a la función para eliminar productos
+        socketServer.emit('arrayProducts', getProducts()); // Llama a la función para obtener productos
     });
 })
 
