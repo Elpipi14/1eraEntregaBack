@@ -34,8 +34,8 @@ socketServer.on('connection', (socket) => {
     });
 
     socket.on('deleteProduct', (productId) => {
-        deleteProduct(productId); // Llama a la función para eliminar productos
-        socketServer.emit('arrayProducts', getProducts()); // Llama a la función para obtener productos
+        deleteProduct(productId);
+        socketServer.emit('arrayProducts', getProducts()); 
     });
 })
 

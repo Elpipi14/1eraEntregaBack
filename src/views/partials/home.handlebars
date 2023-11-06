@@ -1,15 +1,14 @@
-
-     <div class="list_container">
-          <h1 class="title">Products Ecommerce</h1>
-     
-          <div class="card" style="width: 18rem;">
-               <img src="" class="mx-auto img-thumbnail img" alt="">
-               <div class="card_info card-body">
-                    <h2 class="card-text">$</h2>
-                    <p class="card-text">ID: {{firstname}}</p>
-                    <p class="card-text">Price: </p>
-                    <p class="card-text">Stocks: </p>
-                    <p class="card-text">Category: </p>
-               </div>     
+<h1 class="title">Products Ecommerce</h1>
+    <div id="home">
+     {{#each products}}
+     <div class="card" style="width: 18rem;">
+          <img src="{{image}}" class="mx-auto img-thumbnail img" alt="">
+          <div class="card_info card-body">
+               <p class="card-text">{{title}} </p>
+               <p class="card-text">Price: {{price}}</p>
+               <p class="card-text">Stocks: {{stock}}</p>
+               <p class="card-text">Category: {{category}}</p>
           </div>
      </div>
+     {{/each}}
+    </div>

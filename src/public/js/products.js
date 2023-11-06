@@ -1,8 +1,8 @@
-const socketClient = io()
+const socketClient = io();
 
 socketClient.on('saludo desde back', (msg) => {
     console.log(msg);
-})
+});
 
 
 const form = document.getElementById('form');
@@ -52,7 +52,6 @@ socketClient.on('arrayProducts', (productsArrays) => {
                     <p class="card-text">Category: ${e.category}</p>
                 </div>
                 <div class="count">
-                    <button class="btn cart px-auto">Add to Product</button>
                     <button class="btn cart px-auto delete" id="${e.id}">Delete</button>
                 </div>
             </div>

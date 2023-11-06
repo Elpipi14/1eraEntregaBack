@@ -201,3 +201,14 @@
 .add{
     margin-bottom: 0.5rem;
 }
+
+/*Inicio Home*/
+
+#home{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
