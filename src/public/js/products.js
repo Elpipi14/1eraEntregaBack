@@ -51,7 +51,7 @@ socketClient.on('arrayProducts', (productsArrays) => {
                     <p class="card-text">Stocks: ${e.stock}</p>
                     <p class="card-text">Category: ${e.category}</p>
                 </div>
-                <div class="count">
+                <div class="delete">
                     <button class="btn cart px-auto delete" id="${e.id}">Delete</button>
                 </div>
             </div>

@@ -11,5 +11,9 @@ router.get('/realTimeProducts', (req, res) => {
     res.render('partials/realTimeProducts');
 });
 
+router.get('/contact', (req, res) => {
+    res.render('partials/contact');
+});
+
 export default router;
 

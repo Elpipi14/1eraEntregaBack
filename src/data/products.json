@@ -1,26 +1,18 @@
 [
   {
-    "id": "1",
-    "title": "Nike",
-    "price": "500",
-    "stock": "10",
-    "image": "https://firebasestorage.googleapis.com/v0/b/sneaker-react-coderhouse.appspot.com/o/img09.jpg?alt=media&token=a0f11a1c-8995-449a-9f3a-8ddded1d6812&_gl=1*j14fx6*_ga*MTEyMDU1NzQ3NC4xNjk4MTAxMTQ2*_ga_CW55HF8NVT*MTY5OTIzNTIyNS40LjEuMTY5OTIzNTI1Ni4yOS4wLjA.",
-    "category": "2023"
+    "id": "44",
+    "title": "123",
+    "price": "123",
+    "stock": "123",
+    "image": "https://firebasestorage.googleapis.com/v0/b/sneaker-react-coderhouse.appspot.com/o/img10.jpg?alt=media&token=3ffc1bfb-f291-4541-92d6-1782fa47a674&_gl=1*1m9iznq*_ga*MTEyMDU1NzQ3NC4xNjk4MTAxMTQ2*_ga_CW55HF8NVT*MTY5OTA1NTI5MS4yLjEuMTY5OTA1NTMyMy4yOC4wLjA.",
+    "category": "123"
   },
   {
-    "id": "2",
-    "title": "Nike II",
-    "price": "1500",
-    "stock": "10",
-    "image": "https://firebasestorage.googleapis.com/v0/b/sneaker-react-coderhouse.appspot.com/o/img10.jpg?alt=media&token=3ffc1bfb-f291-4541-92d6-1782fa47a674&_gl=1*7eiswk*_ga*MTEyMDU1NzQ3NC4xNjk4MTAxMTQ2*_ga_CW55HF8NVT*MTY5OTIzNTIyNS40LjEuMTY5OTIzNTI4MS40LjAuMA..",
-    "category": "2023"
-  },
-  {
-    "id": "3",
-    "title": "Nike II",
-    "price": "1850",
-    "stock": "8",
-    "image": "https://firebasestorage.googleapis.com/v0/b/sneaker-react-coderhouse.appspot.com/o/img05.jpg?alt=media&token=a31a2826-67b1-4f01-be61-c1519214a6b5&_gl=1*1aehsu7*_ga*MTEyMDU1NzQ3NC4xNjk4MTAxMTQ2*_ga_CW55HF8NVT*MTY5OTIzNTIyNS40LjEuMTY5OTIzNTI5OS41OC4wLjA.",
-    "category": "2024"
+    "id": "98",
+    "title": "89",
+    "price": "898",
+    "stock": "89",
+    "image": "https://firebasestorage.googleapis.com/v0/b/sneaker-react-coderhouse.appspot.com/o/img10.jpg?alt=media&token=3ffc1bfb-f291-4541-92d6-1782fa47a674&_gl=1*1m9iznq*_ga*MTEyMDU1NzQ3NC4xNjk4MTAxMTQ2*_ga_CW55HF8NVT*MTY5OTA1NTI5MS4yLjEuMTY5OTA1NTMyMy4yOC4wLjA.",
+    "category": "98"
   }
 ]

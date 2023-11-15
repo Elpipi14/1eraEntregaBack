@@ -40,8 +40,10 @@ socketServer.on('connection', (socket) => {
 })
 
 app.use('/', viewRouter);
-app.use('/api/products', productsRouter);
-app.use('/api/carts', cartsRouter);
+
+
+// app.use('/api/products', productsRouter);
+// app.use('/api/carts', cartsRouter);
 
 
 
