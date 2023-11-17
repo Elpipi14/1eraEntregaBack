@@ -1,10 +1,10 @@
-import fs from "fs";
+import fs from "fs"; 
 
 // Esta función obtiene los productos desde el archivo JSON creado con la logica socket..para mostrarse en home
 // usando solo handlebars.. se Exporta para usarlo en la carpeta view.router.js para tener la buena practica del orden..
 export const getProducts = () => {
     try {
-        const productsData = JSON.parse(fs.readFileSync("./src/data/products.json", "utf8"));
+        const productsData = JSON.parse(fs.readFileSync("./src/daos/fileSystem/data/products.json", "utf8"));
         return productsData;
     } catch (error) {
         console.error("Error al leer el archivo de productos:", error);
@@ -13,7 +13,7 @@ export const getProducts = () => {
 };
 
 
-//logica del anterior desafio
+// logica del 1er desafio
 export class ProductManager {
 
     constructor(path) {

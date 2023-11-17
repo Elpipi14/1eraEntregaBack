@@ -1,8 +1,8 @@
 import { Router } from "express";
 const router = Router();
 
-import { ProductManager } from "../manager/productsManager.js";
-const productsManager = new ProductManager('./src/data/products.json');
+import { ProductManager } from "../daos/fileSystem/manager/productsManager.js";
+const productsManager = new ProductManager('./src/daos/fileSystem/data/products.json');
 
 import { productValidation } from "../middlewares/productValidation.js";
 

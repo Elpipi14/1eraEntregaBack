@@ -1,7 +1,7 @@
 import fs from 'fs';
 
-//logica implementada para products real Time....para agregar productos al json en carpeta data y eliminarlo.
-const productFilePath = './src/data/products.json';
+// logica implementada para products real Time....para agregar productos al json en carpeta data y eliminarlo.
+const productFilePath = './src/daos/fileSystem/data/products.json';
 
 export const addProduct = (product) => {
     const products = getProducts();
