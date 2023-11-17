@@ -2,6 +2,7 @@ import express from "express";
 import { __dirname } from "./utils.js";
 import handlebars from 'express-handlebars'
 import { Server } from "socket.io"
+import { initMongoDB } from "./daos/mongoseDb/connection.Mongose.js";
 
 import { addProduct, deleteProduct, getProducts } from './daos/fileSystem/manager/ProductsData.js'
 
@@ -10,15 +11,20 @@ import cartsRouter from './router/cart.router.js'
 import viewRouter from './router/views.router.js';
 
 const app = express();
+initMongoDB()
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
-app.use('/', viewRouter);
+
 
 app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
+
+app.use('/api/products', productsRouter);
+app.use('/api/carts', cartsRouter);
+app.use('/', viewRouter);
 
 const httpSever = app.listen(8080, () => {
     console.log("escuchando al puerto 8080");
@@ -40,23 +46,4 @@ socketServer.on('connection', (socket) => {
         deleteProduct(productId);
         socketServer.emit('arrayProducts', getProducts()); 
     });
-})
-
-
-
-
-
-
-app.use('/api/products', productsRouter);
-app.use('/api/carts', cartsRouter);
-
-
-
-
-
-
-
-
-
-
-
+});

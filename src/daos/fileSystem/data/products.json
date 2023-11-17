@@ -1,18 +1,10 @@
 [
   {
-    "id": "20",
-    "title": "Nike 023",
-    "price": "1200",
-    "stock": "2",
+    "id": "6555",
+    "title": "Probando",
+    "price": "2500",
+    "stock": "5",
     "image": "https://firebasestorage.googleapis.com/v0/b/sneaker-react-coderhouse.appspot.com/o/img10.jpg?alt=media&token=3ffc1bfb-f291-4541-92d6-1782fa47a674&_gl=1*1m9iznq*_ga*MTEyMDU1NzQ3NC4xNjk4MTAxMTQ2*_ga_CW55HF8NVT*MTY5OTA1NTI5MS4yLjEuMTY5OTA1NTMyMy4yOC4wLjA.",
-    "category": "2024"
-  },
-  {
-    "id": "20",
-    "title": "Nike 023",
-    "price": "1200",
-    "stock": "2",
-    "image": "https://firebasestorage.googleapis.com/v0/b/sneaker-react-coderhouse.appspot.com/o/img10.jpg?alt=media&token=3ffc1bfb-f291-4541-92d6-1782fa47a674&_gl=1*1m9iznq*_ga*MTEyMDU1NzQ3NC4xNjk4MTAxMTQ2*_ga_CW55HF8NVT*MTY5OTA1NTI5MS4yLjEuMTY5OTA1NTMyMy4yOC4wLjA.",
-    "category": "2024"
+    "category": "2021"
   }
 ]
