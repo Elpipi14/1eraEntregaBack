@@ -12,15 +12,13 @@ export const getProducts = () => {
     }
 };
 
-
-// logica del 1er desafio
 export class ProductManager {
 
     constructor(path) {
         this.path = path;
     }
 
-    async getProducts() {
+    async getAll() {
         try {
             if (fs.existsSync(this.path)) {
                 const productsJSON = await fs.promises.readFile(this.path, 'utf-8');
@@ -34,11 +32,11 @@ export class ProductManager {
     async createProduct(obj) {
         try {
             const product = {
-                id: (await this.#getMaxId()) + 1, ...obj,
+                id: (await this.getById()) + 1, ...obj,
                 status: true,
                 ...obj
             };
-            const products = await this.getProducts();
+            const products = await this.getAll();
             products.push(product);
             await fs.promises.writeFile(this.path, JSON.stringify(products));
             return product;
@@ -47,9 +45,9 @@ export class ProductManager {
         }
     };
 
-    async #getMaxId() {
+    async getById() {
         let maxId = 0;
-        const products = await this.getProducts();
+        const products = await this.getAll();
         products.map((product) => {
             if (product.id > maxId) maxId = product.id;
         });
@@ -58,7 +56,7 @@ export class ProductManager {
 
     async getProductById(id) {
         try {
-            const products = await this.getProducts();
+            const products = await this.getAll();
             const product = products.find(product => product.id === id)
             if (!product) return false;
             return product;
@@ -69,7 +67,7 @@ export class ProductManager {
 
     async updateProduct(updatedProduct, id) {
         try {
-            const products = await this.getProducts();
+            const products = await this.getAll();
             const index = products.findIndex(product => product.id === id);
             if (index === -1) return false;
             for (const prop in updatedProduct) {
@@ -88,7 +86,7 @@ export class ProductManager {
 
     async deleteProduct(id) {
         try {
-            const products = await this.getProducts();
+            const products = await this.getAll();
             if (products.length < 0) return false;
             const newArray = products.filter(product => product.id !== id)
             await fs.promises.writeFile(this.path, JSON.stringify(newArray))

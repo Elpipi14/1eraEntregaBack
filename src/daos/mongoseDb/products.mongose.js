@@ -1,9 +1,6 @@
 import { ProductModel } from "./models/products.models.js";
 
-
-
-
-export default class ProductDaoMongoDB {
+export default class ProductMongoDB {
   async getAll() {
     try {
       const response = await ProductModel.find({});
@@ -22,7 +19,7 @@ export default class ProductDaoMongoDB {
     }
   }
 
-  async create(obj) {
+  async createProduct(obj) {
     try {
       const response = await ProductModel.create(obj);
       return response;
@@ -31,7 +28,7 @@ export default class ProductDaoMongoDB {
     }
   }
 
-  async update(id, obj) {
+  async updateProduct(id, obj) {
     try {
       const response = await ProductModel.findByIdAndUpdate(id, obj, {
         new: true,
@@ -42,7 +39,7 @@ export default class ProductDaoMongoDB {
     }
   }
 
-  async delete(id) {
+  async deleteProduct(id) {
     try {
       const response = await ProductModel.findByIdAndDelete(id);
       return response;

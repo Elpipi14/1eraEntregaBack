@@ -19,9 +19,9 @@ export const getById = async (id) => {
   }
 };
 
-export const create = async (obj) => {
+export const createProduct = async (obj) => {
   try {
-    const newProd = await prodDao.create(obj);
+    const newProd = await prodDao.createProduct(obj);
     if (!newProd) return false;
     else return newProd;
   } catch (error) {
@@ -29,9 +29,9 @@ export const create = async (obj) => {
   }
 };
 
-export const update = async (id, obj) => {
+export const updateProduct = async (id, obj) => {
   try {
-    const prodUpd = await prodDao.update(id, obj);
+    const prodUpd = await prodDao.updateProduct(id, obj);
     if (!prodUpd) return false;
     else return prodUpd;
   } catch (error) {
@@ -39,9 +39,9 @@ export const update = async (id, obj) => {
   }
 };
 
-export const remove = async (id) => {
+export const deleteProduct = async (id) => {
   try {
-    const prodDel = await prodDao.delete(id);
+    const prodDel = await prodDao.deleteProduct(id);
     if (!prodDel) return false;
     else return prodDel;
   } catch (error) {

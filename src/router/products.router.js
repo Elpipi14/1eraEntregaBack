@@ -9,7 +9,7 @@ import { productValidation } from "../middlewares/productValidation.js";
 router.get('/', async (req, res) => {
     try {
         const { limit } = req.query;
-        const products = await productsManager.getProducts();
+        const products = await productsManager.getAll();
         console.log();
         if (limit) {
             const limitedProducts = products.slice(0, parseInt(limit));

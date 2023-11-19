@@ -1,4 +1,4 @@
-import * as service from "../services/product.services.js";
+import * as service from "../service/product.service.js";
 
 export const getAll = async (req, res, next) => {
   try {
@@ -20,9 +20,9 @@ export const getById = async (req, res, next) => {
   }
 };
 
-export const create = async (req, res, next) => {
+export const createProduct = async (req, res, next) => {
   try {
-    const newProd = await service.create(req.body);
+    const newProd = await service.createProduct(req.body);
     if (!newProd) res.status(404).json({ msg: "Error create product!" });
     else res.status(200).json(newProd);
   } catch (error) {
@@ -30,10 +30,10 @@ export const create = async (req, res, next) => {
   }
 };
 
-export const update = async (req, res, next) => {
+export const updateProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const prodUpd = await service.update(id, req.body);
+    const prodUpd = await service.updateProduct(id, req.body);
     if (!prodUpd) res.status(404).json({ msg: "Error update product!" });
     else res.status(200).json(prodUpd);
   } catch (error) {
@@ -41,10 +41,10 @@ export const update = async (req, res, next) => {
   }
 };
 
-export const remove = async (req, res, next) => {
+export const deleteProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const prodDel = await service.remove(id);
+    const prodDel = await service.deleteProduct(id);
     if (!prodDel) res.status(404).json({ msg: "Error delete product!" });
     else res.status(200).json({ msg: `Product id: ${id} deleted` });
   } catch (error) {
