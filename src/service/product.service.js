@@ -1,6 +1,10 @@
 import ProductMongoDB from "../daos/mongoseDb/products.mongose.js";
 const prodDao = new ProductMongoDB();
 
+// import { ProductManager } from "../daos/fileSystem/manager/productsManager.js";
+// import { __dirname } from "../utils.js"
+// const prodDao = new ProductManager(__dirname+'/daos/fileSystem/data/products.json');
+
 export const getAll = async () => {
   try {
     return await prodDao.getAll();
@@ -29,9 +33,9 @@ export const createProduct = async (obj) => {
   }
 };
 
-export const updateProduct = async (id, obj) => {
+export const updateProduct = async (obj, id) => {
   try {
-    const prodUpd = await prodDao.updateProduct(id, obj);
+    const prodUpd = await prodDao.updateProduct(obj, id);
     if (!prodUpd) return false;
     else return prodUpd;
   } catch (error) {

@@ -32,7 +32,7 @@ export class ProductManager {
     async createProduct(obj) {
         try {
             const product = {
-                id: (await this.getById()) + 1, ...obj,
+                id: (await this.getProductById()) + 1, ...obj,
                 status: true,
                 ...obj
             };
@@ -45,7 +45,7 @@ export class ProductManager {
         }
     };
 
-    async getById() {
+    async getProductById() {
         let maxId = 0;
         const products = await this.getAll();
         products.map((product) => {
@@ -54,12 +54,14 @@ export class ProductManager {
         return maxId;
     }
 
-    async getProductById(id) {
+    async getById(id) {
         try {
             const products = await this.getAll();
-            const product = products.find(product => product.id === id)
-            if (!product) return false;
-            return product;
+            const product = products.find((product) => product.id == id)
+            if (product) {
+                return product;
+            };
+            return false;
         } catch (error) {
             console.log(error);
         }
