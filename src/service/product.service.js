@@ -3,7 +3,11 @@ const prodDao = new ProductMongoDB();
 
 // import { ProductManager } from "../daos/fileSystem/manager/productsManager.js";
 // import { __dirname } from "../utils.js"
+<<<<<<< HEAD
 // const prodDao = new ProductManager(__dirname + '/daos/fileSystem/data/products.json');
+=======
+// const prodDao = new ProductManager(__dirname+'/daos/fileSystem/data/products.json');
+>>>>>>> 6ef0c5d65932f7ee580a0e78c17f2942fd7f14d8
 
 export const getAll = async () => {
   try {
