@@ -71,7 +71,7 @@ export class ProductManager {
     async updateProduct(updatedProduct, id) {
         try {
             const products = await this.getAll();
-            const index = products.findIndex(product => product.id === id);
+            const index = products.findIndex(product => product.id == id);
             if (index === -1) return false;
             for (const prop in updatedProduct) {
                 if (updatedProduct.hasOwnProperty(prop)) {
@@ -90,7 +90,7 @@ export class ProductManager {
     async deleteProduct(id) {
         try {
             const products = await this.getAll();
-            const index = products.findIndex(product => product.id === id);
+            const index = products.findIndex(product => product.id == id);
 
             if (index === -1) {
                 console.log("Producto no encontrado");
