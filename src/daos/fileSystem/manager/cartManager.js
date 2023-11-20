@@ -5,7 +5,7 @@ export class CartManager {
         this.path = path;
     }
 
-    async getCarts() {
+    async getAll() {
         try {
             if (fs.existsSync(this.path)) {
                 const cartsJSON = await fs.promises.readFile(this.path, 'utf-8');
@@ -18,7 +18,7 @@ export class CartManager {
 
     async createCart(obj) {
         try {
-            const cart = { id: (await this.#getMaxId()) + 1, ...obj };
+            const cart = { id: (await this.getById()) + 1, ...obj };
             const carts = await this.getCarts();
             carts.push(cart);
             await fs.promises.writeFile(this.path, JSON.stringify(carts));
@@ -28,9 +28,9 @@ export class CartManager {
         }
     };
 
-    async #getMaxId() {
+    async getById() {
         let maxId = 0;
-        const carts = await this.getCarts();
+        const carts = await this.getAll();
         carts.map((cart) => {
             if (cart.id > maxId) maxId = cart.id;
         });
@@ -39,7 +39,7 @@ export class CartManager {
 
     async getCartById(cid) {
         try {
-            const carts = await this.getCarts();
+            const carts = await this.getAll();
             const cart = carts.find(cart => cart.id === String(cid));
             if (!cart) return false;
             return cart;
@@ -50,7 +50,7 @@ export class CartManager {
 
     async deleteCart(id) {
         try {
-            const carts = await this.getCarts();
+            const carts = await this.getAll();
             if (carts.length === 0) return false;
             const newArrayCart = carts.filter(cart => cart.id != id);
             await fs.promises.writeFile(this.path, JSON.stringify(newArrayCart));
@@ -64,7 +64,7 @@ export class CartManager {
 
     async saveProductToCart(idCart, idProd, product) {
         try {
-            const carts = await this.getCarts();
+            const carts = await this.getAll();
             let cartExists = await this.getCartById(idCart);
             console.log("Cart Exists:", cartExists);
 

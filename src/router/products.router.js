@@ -1,15 +1,15 @@
 import { Router } from "express";
 const router = Router();
 
-import { ProductManager } from "../manager/productsManager.js";
-const productsManager = new ProductManager('./src/data/products.json');
+import { ProductManager } from "../daos/fileSystem/manager/productsManager.js";
+const productsManager = new ProductManager('./src/daos/fileSystem/data/products.json');
 
 import { productValidation } from "../middlewares/productValidation.js";
 
 router.get('/', async (req, res) => {
     try {
         const { limit } = req.query;
-        const products = await productsManager.getProducts();
+        const products = await productsManager.getAll();
         console.log();
         if (limit) {
             const limitedProducts = products.slice(0, parseInt(limit));

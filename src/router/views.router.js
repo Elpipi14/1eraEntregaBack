@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getProducts } from "../manager/productsManager.js"; 
+import { getProducts } from "../daos/fileSystem/manager/productsManager.js"; 
 const router = Router();
 
 router.get('/', (req, res) => {

@@ -1,11 +1,11 @@
 import { Router } from "express";
 const router = Router();
 
-import { CartManager } from "../manager/cartManager.js";
-const cartsManager = new CartManager('./src/data/carts.json');
+import { CartManager } from "../daos/fileSystem/manager/cartManager.js";
+const cartsManager = new CartManager('./src/daos/fileSystem/data/carts.json');
 
-import { ProductManager } from "../manager/productsManager.js";
-const productsManager = new ProductManager('./src/data/products.json');
+import { ProductManager } from "../daos/fileSystem/manager/productsManager.js";
+const productsManager = new ProductManager('./src/daos/fileSystem/data/products.json');
 
 let lastCartId = 0;
 
