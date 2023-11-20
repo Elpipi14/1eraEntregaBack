@@ -1,4 +1,4 @@
-import fs from "fs"; 
+import fs from "fs";
 
 // Esta función obtiene los productos desde el archivo JSON creado con la logica socket..para mostrarse en home
 // usando solo handlebars.. se Exporta para usarlo en la carpeta view.router.js para tener la buena practica del orden..
@@ -13,10 +13,6 @@ export const getProducts = () => {
     }
 };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 6ef0c5d65932f7ee580a0e78c17f2942fd7f14d8
 export class ProductManager {
 
     constructor(path) {
@@ -94,7 +90,6 @@ export class ProductManager {
     async deleteProduct(id) {
         try {
             const products = await this.getAll();
-<<<<<<< HEAD
             const index = products.findIndex(product => product.id === id);
 
             if (index === -1) {
@@ -105,15 +100,9 @@ export class ProductManager {
             const newArray = products.filter(product => product.id != id);
             await fs.promises.writeFile(this.path, JSON.stringify(newArray));
             return true;
-=======
-            if (products.length < 0) return false;
-            const newArray = products.filter(product => product.id !== id)
-            await fs.promises.writeFile(this.path, JSON.stringify(newArray))
->>>>>>> 6ef0c5d65932f7ee580a0e78c17f2942fd7f14d8
         } catch (error) {
             console.log(error);
             return false;
         }
     }
 };
-

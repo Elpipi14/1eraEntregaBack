@@ -30,13 +30,7 @@ export default class ProductMongoDB {
 
   async updateProduct(id, obj) {
     try {
-<<<<<<< HEAD
-      const response = await ProductModel.findByIdAndUpdate(obj, id, {
-=======
-      const response = await ProductModel.findByIdAndUpdate(id, obj, {
->>>>>>> 6ef0c5d65932f7ee580a0e78c17f2942fd7f14d8
-        new: true,
-      });
+      const response = await ProductModel.findByIdAndUpdate(obj, id, { new: true, });
       return response;
     } catch (error) {
       console.log(error);
@@ -52,5 +46,3 @@ export default class ProductMongoDB {
     }
   }
 }
-
-
