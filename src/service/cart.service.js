@@ -12,6 +12,14 @@ export const addToCart = async (productId) => {
     }
 };
 
+export const getAll = async () => {
+    try {
+        return await cartDao.getAll();
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const getCartItems = async () => {
     try {
         return await cartDao.getCartItems();
@@ -20,9 +28,9 @@ export const getCartItems = async () => {
     }
 };
 
-export const removeFromCart = async (cartItemId) => {
+export const deleteProduct = async (cartItemId) => {
     try {
-        const removedItem = await cartDao.removeFromCart(cartItemId);
+        const removedItem = await cartDao.deleteProduct(cartItemId);
         if (removedItem) return removedItem;
         else return false;
     } catch (error) {

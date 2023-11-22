@@ -1,26 +1,41 @@
+// carrito.mongo.js
 import { CartModel } from "../models/cart.models.js";
 import { ProductModel } from "../models/products.models.js";
 
-
 export default class CartMongoDB {
-    async addToCart(id) {
+    async addToCart(productId) {
         try {
-            // Obtener el producto por su ID desde la colección de productos
-            const product = await ProductModel.findById(id);
+            const product = await ProductModel.findById(productId);
             if (!product) {
-                throw new Error(`Product not found for ID: ${id}`);
+                throw new Error(`Product not found for ID: ${productId}`);
             }
 
-            // Agregar el producto al carrito
-            const response = await CartModel.create({ product: product.id });
-            return response;
+            // Verificar si el producto ya está en el carrito
+            const existingCartItem = await CartModel.findOne({ product: product.id });
+            if (existingCartItem) {
+                // Si el producto ya está en el carrito, aumentar la cantidad
+                existingCartItem.quantity += 1;
+                await existingCartItem.save();
+                return existingCartItem;
+            }
+
+            // Si el producto no está en el carrito, agregarlo con cantidad 1 y detalles adicionales
+            const newCartItem = new CartModel({
+                product: product.id,
+                quantity: 1,
+                title: product.title,
+                price: product.price,
+            });
+
+            await newCartItem.save();
+            return newCartItem;
         } catch (error) {
-            console.log(error);
+            console.error(error);
+            throw error;
         }
     }
 
-
-    async getCartItems() {
+    async getAll() {
         try {
             const response = await CartModel.find({});
             return response;
@@ -29,9 +44,18 @@ export default class CartMongoDB {
         }
     }
 
-    async removeFromCart(cartItemId) {
+    async deleteProduct(cartItemId) {
         try {
             const response = await CartModel.findByIdAndDelete(cartItemId);
+            return response;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async clearCart() {
+        try {
+            const response = await CartModel.deleteMany({});
             return response;
         } catch (error) {
             console.log(error);

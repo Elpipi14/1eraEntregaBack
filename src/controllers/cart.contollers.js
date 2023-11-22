@@ -2,10 +2,7 @@ import * as cartService from "../service/cart.service.js";
 
 export const addToCart = async (req, res, next) => {
     try {
-        const { productId } = req.params; // Cambia de req.body a req.params
-
-        console.log("Product ID:", productId);
-
+        const { productId } = req.params;
         const cartItem = await cartService.addToCart(productId);
 
         if (cartItem) res.status(200).json(cartItem);
@@ -14,7 +11,6 @@ export const addToCart = async (req, res, next) => {
         next(error.message);
     }
 };
-
 
 export const getCartItems = async (req, res, next) => {
     try {
@@ -25,12 +21,31 @@ export const getCartItems = async (req, res, next) => {
     }
 };
 
-export const removeFromCart = async (req, res, next) => {
+export const getAll = async (req, res, next) => {
     try {
-        const { cartItemId } = req.params;
-        const removedItem = await cartService.removeFromCart(cartItemId);
-        if (removedItem) res.status(200).json({ msg: "Item removed from cart" });
+        const response = await cartService.getAll();
+        res.status(200).json(response);
+    } catch (error) {
+        next(error.message);
+    }
+};
+
+export const deleteProduct = async (req, res, next) => {
+    try {
+        const { cartItemId, productId } = req.params;
+        const removedItem = await cartService.deleteProduct(cartItemId, productId);
+        if (removedItem) res.status(200).json({ msg: "Product removed from cart" });
         else res.status(404).json({ msg: "Error removing from cart!" });
+    } catch (error) {
+        next(error.message);
+    }
+};
+
+export const clearCart = async (req, res, next) => {
+    try {
+        const response = await cartService.clearCart();
+        if (response) res.status(200).json({ msg: "Cart cleared" });
+        else res.status(404).json({ msg: "Error clearing cart!" });
     } catch (error) {
         next(error.message);
     }
