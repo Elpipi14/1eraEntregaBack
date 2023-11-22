@@ -1,6 +1,3 @@
-// import { ProductManager } from "../daos/fileSystem/manager/productsManager.js";
-// import { __dirname } from "../utils.js"
-// const prodDao = new ProductManager(__dirname + '/daos/fileSystem/data/products.json');
 
 import CartMongoDB from "../daos/mongoseDb/Products/carts.mongose.js";
 const cartDao = new CartMongoDB();
