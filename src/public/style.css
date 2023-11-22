@@ -172,7 +172,7 @@ li a:hover {
 }
 
 /*Forms Add*/
-.list_container{
+.list_container {
     box-shadow: 0px 5px 10px rgba(10, 11, 10, 0.288);
     height: 520px;
 }
@@ -183,24 +183,24 @@ li a:hover {
     margin-bottom: 2rem;
     text-align: center;
     font-family: 'Rubik Vinyl', cursive;
-    
+
 }
 
-#form{
+#form {
     text-align: center;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.data{
+.data {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     margin: 0.5rem;
 }
 
-#form input{
+#form input {
     text-align: center;
     margin-top: 0.5rem;
     width: 150px;
@@ -212,18 +212,18 @@ li a:hover {
     color: black;
 }
 
-#form label{
+#form label {
     margin-top: 0.5rem;
 }
 
-.form_add{
+.form_add {
     display: flex;
     justify-content: center;
     flex-direction: row;
     margin-top: 2rem;
 }
 
-.form_add input{
+.form_add input {
     cursor: pointer;
     border-radius: 30px;
     font-weight: 800;
@@ -234,48 +234,49 @@ li a:hover {
 
 
 /** List Products **/
-#products{
+#products {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     margin-bottom: 1rem;
-    
+
 }
 
-.card{
+.card {
     margin-bottom: 1rem !important;
     border-color: black !important;
     border-width: 2px;
     opacity: 95%;
     box-shadow: 0px 5px 10px rgb(10, 11, 10);
     height: 600px;
+
 }
 
-.card_info{
+.card_info {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 0.5rem;
-    
+
 }
 
-.card-text{
+.card-text {
     text-align: center;
     max-width: 100%;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 500px;
 }
 
-.delete{
+.delete {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.number_count{
+.number_count {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -298,18 +299,18 @@ li a:hover {
     background: rgb(8, 8, 8);
 }
 
-.number{
+.number {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
 
-.add{
+.add {
     margin-bottom: 0.5rem;
 }
 
 /*Products Home*/
 
-#home{
+#home {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -317,6 +318,25 @@ li a:hover {
     margin-left: 2rem;
     margin-right: 2rem;
     margin-bottom: 2rem;
+}
+
+.vist {
+    width: 18rem;
+    display: flex;
+    align-items: center;
+}
+
+#home button {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    width: 150px;
+    background-color: rgb(241, 241, 240);
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: 800;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
 }
 
 /*chat*/
@@ -328,7 +348,7 @@ li a:hover {
 .chat {
     border: 1px solid #ccc;
     border-radius: 15px;
-    overflow-y:visible;
+    overflow-y: visible;
     height: 300px;
     border-color: black !important;
     border-width: 2px;
@@ -336,13 +356,13 @@ li a:hover {
     box-shadow: 0px 5px 10px rgb(10, 11, 10);
 }
 
-#output p{
+#output p {
     color: #aaa;
     padding: 14px 0;
     margin: 0 20px;
 }
 
-#actions p{
+#actions p {
     padding: 14px;
     margin: 0 20px;
     border-bottom: 1px solid #e9e9e9;
@@ -393,53 +413,160 @@ footer {
     box-sizing: border-box;
     background: #fcfcfc;
     box-shadow: 0px 5px 10px rgb(10, 11, 10);
-  }
+}
 
-  .container {
+.container {
     max-width: 1200px;
     margin: 0 auto;
-  }
+}
 
-  .footer-content {
+.footer-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+}
 
-  .footer-logo {
+.footer-logo {
     font-size: 1.5em;
     font-weight: bold;
-  }
+}
 
-  .footer-links {
+.footer-links {
     list-style: none;
     padding: 0;
     display: flex;
     font-family: 'Rubik Vinyl', cursive;
-  }
+}
 
-  .footer-links li {
+.footer-links li {
     margin-right: 20px;
-  }
+}
 
-  .footer-links a {
+.footer-links a {
     text-decoration: none;
     color: #000000;
     transition: color 0.3s ease;
-  }
+}
 
-  .footer-links a:hover {
+.footer-links a:hover {
     color: #00bcd4;
-  }
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .footer-links {
-      flex-direction: column;
-      text-align: center;
+        flex-direction: column;
+        text-align: center;
     }
 
     .footer-links li {
-      margin-right: 0;
-      margin-bottom: 10px;
+        margin-right: 0;
+        margin-bottom: 10px;
     }
-  }
+}
+
+
+
+.carrito_products {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 2rem;
+    font-size: 20px;
+    border: 3px groove rgba(28, 110, 164, 0.7);
+    border-radius: 29px 0px 29px 0px;
+}
+
+.title_cart {
+    font-size: 30px;
+    font-family: 'Chivo Mono', monospace;
+}
+
+.sum_stock {
+    display: flex;
+    flex-direction: row;
+    margin: 0.5rem;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+
+.sum_stock h2 {
+    margin-right: 0.5rem;
+}
+
+.aum_rest {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-left: 0.5rem;
+}
+
+.prod_precie {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    font-size: 30px;
+}
+
+div span {
+    margin: 1rem;
+}
+
+.fin_products {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fin {
+    height: 50px;
+    width: 200px !important;
+}
+
+.terminal {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart__navbar {
+    display: flex;
+    cursor: pointer;
+}
+
+.cart__navbar box-icon {
+    width: 45px;
+    height: 45px;
+}
+
+.cart__navbar span {
+    border: 4px solid rgb(198, 52, 52);
+    border-radius: 50% 20% / 10% 40%;
+    color: rgb(2, 2, 2);
+    font-size: 18px;
+    padding: 0rem;
+    background-color: rgb(245, 24, 24);
+    font-weight: 500px;
+}
+
+.fin_products button {
+    background-color: rgb(241, 241, 240);
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: 800;
+
+    color: black;
+}
+
+
+.fin_products button:hover {
+    color: rgb(90, 222, 86);
+    background: rgb(8, 8, 8);
+}
