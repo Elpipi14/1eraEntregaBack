@@ -1,9 +1,9 @@
-import ProductMongoDB from "../daos/mongoseDb/Products/products.mongose.js";
-const prodDao = new ProductMongoDB();
+// import ProductMongoDB from "../daos/mongoseDb/Products/products.mongose.js";
+// const prodDao = new ProductMongoDB();
 
-// import { ProductManager } from "../daos/fileSystem/manager/productsManager.js";
-// import { __dirname } from "../utils.js"
-// const prodDao = new ProductManager(__dirname + '/daos/fileSystem/data/products.json');
+import { ProductManager } from "../daos/fileSystem/manager/productsManager.js";
+import { __dirname } from "../utils.js"
+const prodDao = new ProductManager(__dirname + '/daos/fileSystem/data/products.json');
 
 export const getAll = async () => {
   try {

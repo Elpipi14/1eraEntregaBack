@@ -2,6 +2,10 @@
 import CartMongoDB from "../daos/mongoseDb/Products/carts.mongose.js";
 const cartDao = new CartMongoDB();
 
+// import { CartManager } from "../daos/fileSystem/manager/cartManager.js";
+// import { __dirname } from "../utils.js"
+// const cartDao = new CartManager(__dirname + '/daos/fileSystem/data/carts.json');
+
 export const addToCart = async (productId) => {
     try {
         const cartItem = await cartDao.addToCart(productId);
