@@ -1,19 +1,11 @@
 <div id="cart">
-     {{#each cartItems}}
-        <div class="cart_container">
-            <!-- Detalles del producto en el carrito -->
-            <div class="cart_info">
-                <a class="info">
-                    <div class="cart_img">
-                        <img src="{{imageUrl}}" class="mx-auto img-thumbnail img" alt="">
-                    </div>
-                    <div class="cart_title">
-                        <h2>{{title}}</h2>
-                    </div>
-                </a>
-            </div>
+{{#each products}}
+    <div class="cart-item">
+        <img src="{{imageUrl}}" alt="Producto" class="product-image">
+        <h3 class="product_title">{{title}}</h3>
+        <div class="product-details">
+
             <div class="cart_quantity">
-                <!-- Cantidad del producto en el carrito -->
                 <h2>Cantidad</h2>
                 <div class="aum_rest">
                     <button class="btn cart px-auto">-</button>
@@ -21,15 +13,19 @@
                     <button class="btn cart px-auto">+</button>
                 </div>
             </div>
-            <div class="cart_subtotal">
-                <!-- Precio del producto en el carrito -->
-                <h2>Precio:</h2>
-                <h3>{{price}}</h3>
-            </div>
-        </div>
-    {{/each}}
 
-    <!-- Botones del carrito -->
+            <div class="cart_price">Precio: <span class="price">{{price}} $</span></div>
+            
+            <button class="delete-btn"><box-icon
+                  name="trash-alt"
+                  type="solid"
+                  animation="tada"
+                  color="#7749c7"
+                ></box-icon></button>
+
+        </div>
+    </div>
+{{/each}}
     <div class="cart_btn">
         <button class="btn cart px-auto fin">Add Products</button>
         <button class="btn cart px-auto fin">CheckOut</button>

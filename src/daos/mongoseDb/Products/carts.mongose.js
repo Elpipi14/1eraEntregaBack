@@ -25,6 +25,7 @@ export default class CartMongoDB {
                 quantity: 1,
                 title: product.title,
                 price: product.price,
+                imageUrl: product.imageUrl,
             });
 
             await newCartItem.save();
