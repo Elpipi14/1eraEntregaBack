@@ -16,5 +16,13 @@
     "category": "Prueba",
     "imageUrl": "url img",
     "status": true
+  },
+  {
+    "id": "12",
+    "title": "12",
+    "price": "12",
+    "stock": "12",
+    "image": "https://firebasestorage.googleapis.com/v0/b/sneaker-react-coderhouse.appspot.com/o/img09.jpg?alt=media&token=a0f11a1c-8995-449a-9f3a-8ddded1d6812&_gl=1*j14fx6*_ga*MTEyMDU1NzQ3NC4xNjk4MTAxMTQ2*_ga_CW55HF8NVT*MTY5OTIzNTIyNS40LjEuMTY5OTIzNTI1Ni4yOS4wLjA.",
+    "category": "12"
   }
 ]

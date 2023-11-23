@@ -16,7 +16,7 @@ export class CartManager {
         }
     };
 
-    async createCart(obj) {
+    async addToCart(obj) {
         try {
             const cart = { id: (await this.getById()) + 1, ...obj };
             const carts = await this.getCarts();
@@ -48,7 +48,7 @@ export class CartManager {
         }
     }
 
-    async deleteCart(id) {
+    async deleteProduct(id) {
         try {
             const carts = await this.getAll();
             if (carts.length === 0) return false;
