@@ -483,9 +483,9 @@ footer {
 
 .info{
     display: flex;
-    align-items: flex-start;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .cart_img{
@@ -505,11 +505,24 @@ footer {
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 1rem;
 }
 
 .cart_quantity h2{
     text-align: center;
+}
+
+.cart_quantity button {
+    background-color: rgb(241, 241, 240);
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: 800;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
+}
+
+.cart_quantity button:hover {
+    color: rgb(90, 222, 86);
+    background: rgb(8, 8, 8);
 }
 
 .aum_rest{
@@ -518,6 +531,13 @@ footer {
 
 .aum_rest span{
     margin: 1rem;
+}
+
+.cart_subtotal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.5rem;
 }
 
 .cart_btn{

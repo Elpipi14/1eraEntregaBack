@@ -1,30 +1,37 @@
 <div id="cart">
-  <div class="cart_container">
-    <div class="cart_info">
-      <a class="info">
-        <div class="cart_img">
-          <img src="https://firebasestorage.googleapis.com/v0/b/sneaker-react-coderhouse.appspot.com/o/img02.jpg?alt=media&amp;token=8313a4aa-4cbf-4c84-98b8-b962a5faa212" class="mx-auto img-thumbnail img" alt="">
+     {{#each cartItems}}
+        <div class="cart_container">
+            <!-- Detalles del producto en el carrito -->
+            <div class="cart_info">
+                <a class="info">
+                    <div class="cart_img">
+                        <img src="{{imageUrl}}" class="mx-auto img-thumbnail img" alt="">
+                    </div>
+                    <div class="cart_title">
+                        <h2>{{title}}</h2>
+                    </div>
+                </a>
+            </div>
+            <div class="cart_quantity">
+                <!-- Cantidad del producto en el carrito -->
+                <h2>Cantidad</h2>
+                <div class="aum_rest">
+                    <button class="btn cart px-auto">-</button>
+                    <span>{{quantity}}</span>
+                    <button class="btn cart px-auto">+</button>
+                </div>
+            </div>
+            <div class="cart_subtotal">
+                <!-- Precio del producto en el carrito -->
+                <h2>Precio:</h2>
+                <h3>{{price}}</h3>
+            </div>
         </div>
-        <div class="cart_title">
-          <h2>Title</h2>
-        </div>
-      </a>
+    {{/each}}
+
+    <!-- Botones del carrito -->
+    <div class="cart_btn">
+        <button class="btn cart px-auto fin">Add Products</button>
+        <button class="btn cart px-auto fin">CheckOut</button>
     </div>
-    <div class="cart_quantity">
-      <h2>Cantidad</h2>
-      <div class="aum_rest">
-        <button class="btn cart px-auto">-</button>
-        <span> 0 </span>
-        <button class="btn cart px-auto">+</button>      
-      </div>
-    </div>  
-    <div class="cart_subtotal">
-        <h2>Total:</h2>
-    </div>
-  </div>
-  <div class="cart_btn">
-    <button class="btn cart px-auto fin">Add Products</button>
-    <button class="btn cart px-auto fin">CheckOut</button>
-  </div> 
 </div>
-    

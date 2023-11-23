@@ -9,7 +9,14 @@
             <p class="card-text">Stocks: {{stock}}</p>
             <p class="card-text">Category: {{category}}</p>
         </div>
-        <button class="btn cart px-auto" id="${e.id}">Add Product</button>
+       <button class="btn cart px-auto add-to-cart-btn" data-product-id="{{_id}}">Add Product</button>
+        </div>
+        {{/each}}
+ 
     </div>
-{{/each}}
-    </div>
+<script src="js/addProd.js"></script>
+
+   
+
+ 
+
