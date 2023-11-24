@@ -4,7 +4,7 @@
 
 import { CartManager } from "../daos/fileSystem/manager/cartManager.js";
 import { __dirname } from "../utils.js"
-const cartDao = new CartManager(__dirname + '/daos/fileSystem/data/products.json');
+const cartDao = new CartManager(__dirname + '/daos/fileSystem/data/carts.json');
 
 export const addToCart = async (productId) => {
     try {
@@ -35,6 +35,16 @@ export const getCartItems = async () => {
 export const deleteProduct = async (cartItemId) => {
     try {
         const removedItem = await cartDao.deleteProduct(cartItemId);
+        if (removedItem) return removedItem;
+        else return false;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const clearCart = async (cartItemId) => {
+    try {
+        const removedItem = await cartDao.clearCart(cartItemId);
         if (removedItem) return removedItem;
         else return false;
     } catch (error) {
