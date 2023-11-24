@@ -16,17 +16,55 @@ export class CartManager {
         }
     };
 
-    async addToCart(obj) {
+    async getProducts() {
         try {
-            const cart = { id: (await this.getById()) + 1, ...obj };
-            const carts = await this.getCarts();
-            carts.push(cart);
-            await fs.promises.writeFile(this.path, JSON.stringify(carts));
+            const productsJSON = await fs.promises.readFile("./src/daos/fileSystem/data/products.json", 'utf-8');
+            return JSON.parse(productsJSON);
+        } catch (error) {
+            console.log(error);
+            return [];
+        }
+    }
+
+    async addToCart(productId) {
+        try {
+            const products = await this.getProducts();
+            const product = products.find(p => p.id == productId);
+
+            if (!product) {
+                console.log(`Producto con ID ${productId} no encontrado.`);
+                return false;
+            }
+
+            const carts = await this.getAll();
+            let cart = carts.find(c => c.products && c.products.some(p => p.product == productId));
+
+            if (!cart) {
+                const newCartId = (await this.getById()) + 1;
+                cart = { id: newCartId, products: [] };
+                carts.push(cart);
+            }
+
+            const existingProduct = cart.products.find(p => p.product == productId);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                const newProduct = {
+                    product: productId,
+                    quantity: 1,
+                    title: product.title,
+                    price: product.price
+                };
+                cart.products.push(newProduct);
+            }
+
+            await fs.promises.writeFile(this.path, JSON.stringify(carts, null, 2));
             return cart;
         } catch (error) {
             console.log(error);
+            return false;
         }
-    };
+    }
 
     async getById() {
         let maxId = 0;
@@ -37,7 +75,7 @@ export class CartManager {
         return maxId;
     }
 
-    async getCartById(cid) {
+    async getCartItems(cid) {
         try {
             const carts = await this.getAll();
             const cart = carts.find(cart => cart.id === String(cid));

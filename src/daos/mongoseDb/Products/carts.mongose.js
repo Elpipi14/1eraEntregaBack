@@ -10,16 +10,13 @@ export default class CartMongoDB {
                 throw new Error(`Product not found for ID: ${productId}`);
             }
 
-            // Verificar si el producto ya está en el carrito
             const existingCartItem = await CartModel.findOne({ product: product.id });
             if (existingCartItem) {
-                // Si el producto ya está en el carrito, aumentar la cantidad
                 existingCartItem.quantity += 1;
                 await existingCartItem.save();
                 return existingCartItem;
             }
 
-            // Si el producto no está en el carrito, agregarlo con cantidad 1 y detalles adicionales
             const newCartItem = new CartModel({
                 product: product.id,
                 quantity: 1,

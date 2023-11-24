@@ -1,4 +1,5 @@
 [
+<<<<<<< HEAD
   {
     "id": 1,
     "title": "Producto de prueba post",
@@ -25,4 +26,33 @@
     "image": "https://firebasestorage.googleapis.com/v0/b/sneaker-react-coderhouse.appspot.com/o/img09.jpg?alt=media&token=a0f11a1c-8995-449a-9f3a-8ddded1d6812&_gl=1*j14fx6*_ga*MTEyMDU1NzQ3NC4xNjk4MTAxMTQ2*_ga_CW55HF8NVT*MTY5OTIzNTIyNS40LjEuMTY5OTIzNTI1Ni4yOS4wLjA.",
     "category": "12"
   }
+=======
+    {
+        "id": 1,
+        "title": "Producto de prueba post",
+        "price": 9559,
+        "stock": 10,
+        "category": "Prueba",
+        "imageUrl": "url img",
+        "status": true
+    },
+    {
+        "id": 2,
+        "title": "Producto de prueba post2",
+        "price": 9559,
+        "stock": 10,
+        "category": "Prueba",
+        "imageUrl": "url img",
+        "status": true
+    },
+    {
+        "id": 3,
+        "title": "Producto de prueba post3",
+        "price": 9559,
+        "stock": 10,
+        "category": "Prueba",
+        "imageUrl": "url img",
+        "status": true
+    }
+>>>>>>> 7ced058add77fc4915a7206bcde0560e3ec91cdd
 ]
