@@ -32,7 +32,7 @@ router.get('/contact', (req, res) => {
 
 router.get('/cart', async (req, res) => {
     try {
-        const products = await cartDao.getAll();
+        const products = await cartDao.getCart();
         // Convierte los objetos de monngo a objetos planos
         const productsPlain = products.map(product => Object.assign({}, product.toJSON()));
 

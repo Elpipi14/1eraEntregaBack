@@ -16,6 +16,7 @@ export class CartManager {
         }
     };
 
+    // Buscar los productos json para ultilizar con addToCart
     async getProducts() {
         try {
             const productsJSON = await fs.promises.readFile("./src/daos/fileSystem/data/products.json", 'utf-8');
@@ -100,6 +101,18 @@ export class CartManager {
         }
     }
 
+    async clearCart() {
+        try {
+            const updatedCarts = [];
+            await fs.promises.writeFile(this.path, JSON.stringify(updatedCarts, null, 2));
+            console.log("Carrito vaciado exitosamente.");
+            return true;
+        } catch (error) {
+            console.error("Error al vaciar el carrito:", error);
+            return false;
+        }
+    }
+    
     async saveProductToCart(idCart, idProd, product) {
         try {
             const carts = await this.getAll();

@@ -6,38 +6,56 @@ const cartDao = new CartMongoDB();
 // import { __dirname } from "../utils.js"
 // const cartDao = new CartManager(__dirname + '/daos/fileSystem/data/carts.json');
 
-export const addToCart = async (productId) => {
+export const createCart = async () => {
+    return await cartDao.createCart();
+};
+
+export const addToCart = async (cartId, productId) => {
     try {
-        const cartItem = await cartDao.addToCart(productId);
-        if (cartItem) return cartItem;
-        else return false;
+        return await cartDao.addToCart(cartId, productId);
     } catch (error) {
         console.log(error);
+        throw error;
     }
 };
 
-export const getAll = async () => {
+export const getCart = async () => {
     try {
-        return await cartDao.getAll();
+        return await cartDao.getCart();
     } catch (error) {
         console.log(error);
+        throw error;
     }
 };
 
-export const getCartItems = async () => {
+export const getCartById = async (cartId) => {
     try {
-        return await cartDao.getCartItems();
+        return await cartDao.getCartById(cartId);
     } catch (error) {
         console.log(error);
+        throw error;
     }
 };
 
-export const deleteProduct = async (cartItemId) => {
+export const deleteProduct = async (cartId, productId) => {
     try {
-        const removedItem = await cartDao.deleteProduct(cartItemId);
-        if (removedItem) return removedItem;
-        else return false;
+        return await cartDao.deleteProduct(cartId, productId);
     } catch (error) {
         console.log(error);
+        throw error;
     }
 };
+
+export const deleteCart = async (cartId) => {
+    try {
+        return await cartDao.deleteCart(cartId);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};
+
+export const clearCart = async () => {
+    return await cartDao.clearCart();
+};
+

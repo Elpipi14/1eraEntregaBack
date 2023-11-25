@@ -10,8 +10,8 @@ import { updateProduct, deleteProduct, getAll } from './daos/fileSystem/manager/
 //Conexion con mongo y logica para trabjar con post
 import { initMongoDB } from "./daos/mongoseDb/connection.Mongose.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
-import routerMongo from "./router/product.routemongose.js";
-import routerCart from "./router/cart.mongo.js";
+import routerMongo from "./router/product.route.js";
+import routerCart from "./router/cart.route.js";
 
 // Express conexion con public
 const app = express();
@@ -29,8 +29,8 @@ app.use(errorHandler);
 
 //Router Mongo
 initMongoDB()
-app.use('/products', routerMongo);
-app.use('/carts', routerCart);
+app.use('/api/products', routerMongo);
+app.use('/api/carts', routerCart);
 
 // conexion HTTP
 const httpSever = app.listen(8080, () => {
