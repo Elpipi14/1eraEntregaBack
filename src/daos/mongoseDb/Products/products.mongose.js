@@ -16,6 +16,7 @@ export default class ProductMongoDB {
       return response;
     } catch (error) {
       console.log(error);
+      return null
     }
   }
 
@@ -45,4 +46,17 @@ export default class ProductMongoDB {
       console.log(error);
     }
   }
+
+  async aggregation1() {
+    try {
+      return await ProductModel.aggregate([
+        {
+          $match: { category: '2023' }
+        },
+      ]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
 }

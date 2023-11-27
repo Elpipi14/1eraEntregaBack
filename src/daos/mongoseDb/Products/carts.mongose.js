@@ -29,19 +29,15 @@ export default class CartMongoDB {
                 throw new Error(`Cart not found for ID: ${cartId}`);
             }
 
-            // Verifica si 'products' es undefined y, si lo es, inicializa el array
             if (!cart.products) {
                 cart.products = [];
             }
 
-            // Busca si el producto ya está en el carrito
             const existingProductIndex = cart.products.findIndex(item => item.product.toString() === productId);
 
             if (existingProductIndex !== -1) {
-                // Si el producto ya está en el carrito, aumenta la cantidad
                 cart.products[existingProductIndex].quantity += 1;
             } else {
-                // Si el producto no está en el carrito, agrégalo
                 cart.products.push({
                     quantity: 1,
                     title: product.title,
@@ -50,7 +46,6 @@ export default class CartMongoDB {
                 });
             }
 
-            // Guarda el carrito actualizado
             cart = await cart.save();
 
             return cart;
@@ -85,10 +80,8 @@ export default class CartMongoDB {
                 throw new Error(`Cart not found for ID: ${cartId}`);
             }
 
-            // Filtra los productos, excluyendo el que tiene la ID dada
             cart.products = cart.products.filter(item => item._id.toString() !== productId);
 
-            // Guarda el carrito actualizado
             const updatedCart = await cart.save();
             return updatedCart;
         } catch (error) {

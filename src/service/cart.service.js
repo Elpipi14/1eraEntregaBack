@@ -7,7 +7,12 @@ const cartDao = new CartMongoDB();
 // const cartDao = new CartManager(__dirname + '/daos/fileSystem/data/carts.json');
 
 export const createCart = async () => {
-    return await cartDao.createCart();
+    try {
+        return await cartDao.createCart();
+    } catch (error) {
+        console.log(error); 
+        throw error;  
+    }
 };
 
 export const addToCart = async (cartId, productId) => {
@@ -56,6 +61,10 @@ export const deleteCart = async (cartId) => {
 };
 
 export const clearCart = async () => {
-    return await cartDao.clearCart();
+    try {
+        return await cartDao.clearCart();
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
 };
-

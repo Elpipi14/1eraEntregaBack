@@ -13,4 +13,6 @@ routerMongo.put("/:id", controller.updateProduct); //actualiza el producto
 
 routerMongo.delete("/:id", controller.deleteProduct); //elimina el producto
 
+routerMongo.get('/aggregation1', controller.aggregation1);
+
 export default routerMongo;

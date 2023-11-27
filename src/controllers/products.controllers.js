@@ -51,3 +51,12 @@ export const deleteProduct = async (req, res, next) => {
     next(error.message);
   }
 };
+
+export const aggregation1 = async(req,res,next) =>{
+  try {
+    const response = await service.aggregation1();
+    res.json(response);
+  } catch (error) {
+    console.log(error);
+  }
+}
