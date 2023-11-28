@@ -72,3 +72,19 @@ export const clearCart = async (req, res, next) => {
         next(error.message);
     }
 };
+
+export const updateProductQuantity = async (req, res, next) => {
+    try {
+        const { cId, pId } = req.params;
+        const { quantity } = req.body;
+
+        if (isNaN(quantity) || quantity <= 0) {
+            return res.status(400).json({ error: 'La cantidad debe ser un número positivo.' });
+        }
+
+        const cart = await cartService.updateProductQuantity(cId, pId, quantity);
+        res.status(200).json(cart);
+    } catch (error) {
+        next(error.message);
+    }
+};

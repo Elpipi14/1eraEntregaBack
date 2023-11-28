@@ -5,9 +5,9 @@ const prodDao = new ProductMongoDB();
 // import { __dirname } from "../utils.js"
 // const prodDao = new ProductManager(__dirname + '/daos/fileSystem/data/products.json');
 
-export const getAll = async () => {
+export const getAll = async (page, limit) => {
   try {
-    return await prodDao.getAll();
+    return await prodDao.getAll(page, limit);
   } catch (error) {
     console.log(error);
   }
@@ -53,9 +53,9 @@ export const deleteProduct = async (id) => {
   }
 };
 
-export const aggregation1 = async () => {
+export const aggregation1 = async (category) => {
   try {
-    const response = await prodDao.aggregation1();
+    const response = await prodDao.aggregation1(category);
     return response;
   } catch (error) {
     console.log(error);

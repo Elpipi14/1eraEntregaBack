@@ -110,4 +110,23 @@ export default class CartMongoDB {
         }
     }
 
+    async updateProductQuantity(cartId, productId, newQuantity) {
+        try {
+          const updatedCart = await CartModel.findOneAndUpdate(
+            { _id: cartId, 'products.product': productId },
+            { $set: { 'products.$.quantity': newQuantity } },
+            { new: true }
+          );
+      
+          if (!updatedCart) {
+            throw new Error(`Cart or product not found for IDs: ${cartId}, ${productId}`);
+          }
+      
+          return updatedCart;
+        } catch (error) {
+          console.error(error);
+          throw error;
+        }
+      }
+
 }

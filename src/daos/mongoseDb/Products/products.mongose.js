@@ -1,14 +1,27 @@
 import { ProductModel } from "../models/products.models.js";
 
 export default class ProductMongoDB {
-  async getAll() {
-    try {
-      const response = await ProductModel.find({});
-      return response;
-    } catch (error) {
-      console.log(error);
+
+    async getAll(page = 1, limit = 10) {
+      try {
+        const response = await ProductModel.paginate({}, { page, limit, sort: { price: 1 }  });
+        const next = response.hasNextPage ? `http://localhost:8080/api/products?page=${response.nextPage}` : null;
+        const prev = response.hasPrevPage ? `http://localhost:8080/api/products?page=${response.prevPage}` : null;
+        return {
+          payload: response.docs,
+          info: {
+            count: response.docs.length, // Corregido: debería ser response.docs.length
+            pages: response.totalPages,
+            next,
+            prev
+          }
+        };
+      } catch (error) {
+        console.log(error);
+        throw error; // Deberías manejar el error en el nivel superior o registrar adecuadamente.
+      }
     }
-  }
+  
 
   async getById(id) {
     try {
@@ -47,24 +60,17 @@ export default class ProductMongoDB {
     }
   }
 
-  async aggregation1() {
+  async aggregation1(category) {
     try {
-      console.log('Iniciando operación de agregación...');
-
-      const result = await ProductModel.aggregate([
+      return await ProductModel.aggregate([
         {
-          $match: { category: '2024' }
+          $match: { category: category }
+        },
+        {
+          $sort: { price: 1 } // Ordenar de menor a mayor
         },
       ]);
 
-      console.log('Operación de agregación completada. Resultados:', result);
-
-      if (result.length === 0) {
-        console.log('No se encontraron productos en la categoría especificada.');
-        return { msg: 'No se encontraron productos en la categoría especificada.' };
-      }
-
-      return result;
     } catch (error) {
       console.error('Error en la operación de agregación:', error);
       return null;
