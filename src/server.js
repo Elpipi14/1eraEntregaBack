@@ -4,9 +4,6 @@ import handlebars from 'express-handlebars'
 import viewRouter from './router/views.router.js';
 import { Server } from "socket.io"
 
-//conecta con socket.io en fileSystem
-import { updateProduct, deleteProduct, getAll } from './daos/fileSystem/manager/ProductsData.js';
-
 //Conexion con mongo y logica para trabjar con post
 import { initMongoDB } from "./daos/mongoseDb/connection.Mongose.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
@@ -37,9 +34,16 @@ const httpSever = app.listen(8080, () => {
     console.log("escuchando al puerto 8080");
 });
 
-// logica Socket
-const socketServer = new Server(httpSever);
 
+
+
+
+
+
+// logica Socket
+//conecta con socket.io en fileSystem
+import { updateProduct, deleteProduct, getAll } from './daos/fileSystem/manager/ProductsData.js';
+const socketServer = new Server(httpSever);
 socketServer.on('connection', (socket) => {
     console.log(`Usuario Conectado ${socket.id}`);
     socket.on('disconnect', () => console.log(`Usuario desconectado`));

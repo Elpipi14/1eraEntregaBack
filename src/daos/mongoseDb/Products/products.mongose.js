@@ -10,7 +10,7 @@ export default class ProductMongoDB {
         return {
           payload: response.docs,
           info: {
-            count: response.docs.length, // Corregido: debería ser response.docs.length
+            count: response.docs.length, 
             pages: response.totalPages,
             next,
             prev
@@ -18,11 +18,10 @@ export default class ProductMongoDB {
         };
       } catch (error) {
         console.log(error);
-        throw error; // Deberías manejar el error en el nivel superior o registrar adecuadamente.
+        throw error;
       }
     }
   
-
   async getById(id) {
     try {
       const response = await ProductModel.findById(id);
@@ -67,7 +66,7 @@ export default class ProductMongoDB {
           $match: { category: category }
         },
         {
-          $sort: { price: 1 } // Ordenar de menor a mayor
+          $sort: { price: 1 } 
         },
       ]);
 

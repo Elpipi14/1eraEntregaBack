@@ -86,5 +86,5 @@ export const updateProductQuantity = async (req, res, next) => {
         res.status(200).json(cart);
     } catch (error) {
         next(error.message);
-    }
+    };
 };
