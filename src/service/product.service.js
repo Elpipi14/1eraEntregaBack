@@ -52,3 +52,12 @@ export const deleteProduct = async (id) => {
     console.log(error);
   }
 };
+
+export const aggregation1 = async () => {
+  try {
+    const response = await prodDao.aggregation1();
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};

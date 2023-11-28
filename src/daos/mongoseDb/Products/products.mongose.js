@@ -16,6 +16,7 @@ export default class ProductMongoDB {
       return response;
     } catch (error) {
       console.log(error);
+      return null
     }
   }
 
@@ -45,4 +46,30 @@ export default class ProductMongoDB {
       console.log(error);
     }
   }
+
+  async aggregation1() {
+    try {
+      console.log('Iniciando operación de agregación...');
+
+      const result = await ProductModel.aggregate([
+        {
+          $match: { category: '2024' }
+        },
+      ]);
+
+      console.log('Operación de agregación completada. Resultados:', result);
+
+      if (result.length === 0) {
+        console.log('No se encontraron productos en la categoría especificada.');
+        return { msg: 'No se encontraron productos en la categoría especificada.' };
+      }
+
+      return result;
+    } catch (error) {
+      console.error('Error en la operación de agregación:', error);
+      return null;
+    }
+  }
+
+
 }
