@@ -2,8 +2,8 @@ import * as service from "../service/product.service.js";
 
 export const getAll = async (req, res, next) => {
   try {
-    const {page , limit} = req.query;
-    const response = await service.getAll(page, limit);
+    const { page, limit, category, sortOrder } = req.query;
+    const response = await service.getAll(page, limit, category, sortOrder);
     res.status(200).json(response);
   } catch (error) {
     next(error.message);
@@ -55,7 +55,7 @@ export const deleteProduct = async (req, res, next) => {
 
 export const aggregation1 = async (req, res, next) => {
   try {
-    const { category } = req.query; 
+    const { category } = req.query;
     const response = await service.aggregation1(category);
     res.json(response);
   } catch (error) {

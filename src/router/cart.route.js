@@ -25,8 +25,4 @@ routerCart.delete("/:cId", cartController.deleteCart);
 // Vaciar carrito
 routerCart.delete("/", cartController.clearCart);
 
-//modifica la cantidad por query
-routerCart.put('/api/carts/:cid/products/:pid', cartController.updateProductQuantity);
-
 export default routerCart;
-

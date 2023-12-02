@@ -1,5 +1,5 @@
 
-import CartMongoDB from "../daos/mongoseDb/Products/carts.mongose.js";
+import CartMongoDB from "../daos/mongoseDb/DB/carts.mongose.js";
 const cartDao = new CartMongoDB();
 
 // import { CartManager } from "../daos/fileSystem/manager/cartManager.js";
@@ -10,8 +10,8 @@ export const createCart = async () => {
     try {
         return await cartDao.createCart();
     } catch (error) {
-        console.log(error); 
-        throw error;  
+        console.log(error);
+        throw error;
     }
 };
 
@@ -68,12 +68,3 @@ export const clearCart = async () => {
         throw error;
     }
 };
-
-export const updateProductQuantity = async (cartId, productId, newQuantity) => {
-    try {
-        return await cartDao.updateProductQuantity(cartId, productId, newQuantity);
-    } catch (error) {
-        console.log(error);
-        throw error;
-    }
-}

@@ -1,13 +1,13 @@
-import ProductMongoDB from "../daos/mongoseDb/Products/products.mongose.js";
+import ProductMongoDB from "../daos/mongoseDb/DB/products.mongose.js";
 const prodDao = new ProductMongoDB();
 
 // import { ProductManager } from "../daos/fileSystem/manager/productsManager.js";
 // import { __dirname } from "../utils.js"
 // const prodDao = new ProductManager(__dirname + '/daos/fileSystem/data/products.json');
 
-export const getAll = async (page, limit) => {
+export const getAll = async (page, limit, category, sortOrder) => {
   try {
-    return await prodDao.getAll(page, limit);
+    return await prodDao.getAll(page, limit, category, sortOrder);
   } catch (error) {
     console.log(error);
   }

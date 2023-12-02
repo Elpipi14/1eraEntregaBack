@@ -2,7 +2,6 @@ import express from "express";
 import { __dirname } from "./utils.js";
 import handlebars from 'express-handlebars'
 import viewRouter from './router/views.router.js';
-import { Server } from "socket.io"
 
 //Conexion con mongo y logica para trabjar con post
 import { initMongoDB } from "./daos/mongoseDb/connection.Mongose.js";
@@ -18,7 +17,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
 // Handlebars
-app.engine('handlebars', handlebars.engine());
+const hbs = handlebars.create({
+    allowProtoMethodsByDefault: true,
+    allowProtoPropertiesByDefault: true,
+});
+
+app.engine('handlebars', hbs.engine);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
 app.use('/', viewRouter);
@@ -34,30 +38,14 @@ const httpSever = app.listen(8080, () => {
     console.log("escuchando al puerto 8080");
 });
 
+//LOGIN
+import cookieParser from "cookie-parser";
+import session from "express-session";
+import routerUser from "./router/user.route.js"
+import { mongoStoreOptions } from "./utils.js";
 
-
-
-
-
-
-// logica Socket
-//conecta con socket.io en fileSystem
-import { updateProduct, deleteProduct, getAll } from './daos/fileSystem/manager/ProductsData.js';
-const socketServer = new Server(httpSever);
-socketServer.on('connection', (socket) => {
-    console.log(`Usuario Conectado ${socket.id}`);
-    socket.on('disconnect', () => console.log(`Usuario desconectado`));
-
-
-    socket.on('newProducts', (product) => {
-        updateProduct(product);
-        socketServer.emit('arrayProducts', getAll());
-    });
-
-    socket.on('deleteProduct', (productId) => {
-        deleteProduct(productId);
-        socketServer.emit('arrayProducts', getAll());
-    });
-});
+app.use(cookieParser())
+app.use('/', routerUser);
+app.use(session(mongoStoreOptions));
 
 

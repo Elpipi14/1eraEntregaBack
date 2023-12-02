@@ -1,28 +1,24 @@
 import { Router } from "express";
 import { getProducts } from "../daos/fileSystem/manager/productsManager.js";
-import ProductMongoDB from "../daos/mongoseDb/Products/products.mongose.js";
-import CartMongoDB from "../daos/mongoseDb/Products/carts.mongose.js"
+import ProductMongoDB from "../daos/mongoseDb/DB/products.mongose.js";
+import CartMongoDB from "../daos/mongoseDb/DB/carts.mongose.js"
 const prodDao = new ProductMongoDB();
 const cartDao = new CartMongoDB();
 const router = Router();
 
 router.get('/', async (req, res) => {
     try {
-        const products = await prodDao.getAll();
-        // log muestra los productos de mogo
+        const result = await prodDao.getAll();
+        const products = result.payload.products;
         // console.log(products);
-
-        // Convierte los objetos de monngo a objetos planos
-        const productsPlain = products.map(product => Object.assign({}, product.toJSON()));
-
-        res.render('partials/home', { products: productsPlain });
+        res.render('partials/home', { products });
     } catch (error) {
         console.error('Error al obtener productos:', error.message);
         res.status(500).send('Error interno del servidor');
     }
 });
 
-router.get('/product', (req, res) => {
+router.get('/product', async (req, res) => {
     res.render('partials/realTimeProducts');
 });
 
@@ -33,14 +29,30 @@ router.get('/contact', (req, res) => {
 router.get('/cart', async (req, res) => {
     try {
         const products = await cartDao.getCart();
-        // Convierte los objetos de monngo a objetos planos
         const productsPlain = products.map(product => Object.assign({}, product.toJSON()));
-
-        res.render('partials/cart', { products: productsPlain });
+        // console.log(productsPlain)
+        res.render('partials/cart', { carts: productsPlain });
     } catch (error) {
         console.error('Error al obtener productos:', error.message);
         res.status(500).send('Error interno del servidor');
     }
 });
+
+router.get('/login', async (req, res) => {
+    res.render('partials/login');
+});
+
+router.get('/register', async (req, res) => {
+    res.render('partials/register');
+});
+
+router.get('/profile', async (req, res) => {
+    res.render('partials/profile');
+});
+
+router.get('/register-error', async (req, res) => {
+    res.render('partials/register-error');
+});
+
 export default router;
 
