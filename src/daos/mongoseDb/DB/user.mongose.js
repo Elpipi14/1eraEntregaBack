@@ -25,7 +25,6 @@ export default class UserMongoDB {
   
     async login(email, password) {
       try {
-        console.log('body', email, password);
         const userExist = await UserModel.findOne({ email: email, password: password });
         console.log('login::', userExist);
         if (!userExist) return false;
@@ -33,5 +32,5 @@ export default class UserMongoDB {
       } catch (error) {
         console.log(error);
       }
-    }
-}  
+    };
+};

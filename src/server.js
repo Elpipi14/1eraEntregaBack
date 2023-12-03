@@ -28,6 +28,16 @@ app.set('view engine', 'handlebars');
 app.use('/', viewRouter);
 app.use(errorHandler);
 
+//LOGIN
+import cookieParser from "cookie-parser";
+import session from "express-session";
+import routerUser from "./router/user.route.js"
+import { mongoStoreOptions } from "./utils.js";
+
+app.use(cookieParser());
+app.use(session(mongoStoreOptions));
+app.use('/', routerUser);
+
 //Router Mongo
 initMongoDB()
 app.use('/api/products', routerMongo);
@@ -38,14 +48,6 @@ const httpSever = app.listen(8080, () => {
     console.log("escuchando al puerto 8080");
 });
 
-//LOGIN
-import cookieParser from "cookie-parser";
-import session from "express-session";
-import routerUser from "./router/user.route.js"
-import { mongoStoreOptions } from "./utils.js";
 
-app.use(cookieParser())
-app.use('/', routerUser);
-app.use(session(mongoStoreOptions));
 
 

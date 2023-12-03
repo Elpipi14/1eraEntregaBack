@@ -8,10 +8,6 @@ routerUser.post('/register', userControllers.register);
 
 routerUser.post("/login", userControllers.login);
 
-routerUser.get("/info", userControllers.login);
-
-router.get("/secret-endpoint", validateLogIn, visit);
-
 routerUser.post("/logout", userControllers.logout);
 
 

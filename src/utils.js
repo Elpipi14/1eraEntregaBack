@@ -17,8 +17,8 @@ export const mongoStoreOptions = {
     }),
     secret: "1234",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
-      maxAge: 200000,
+      maxAge: 120000,
     },
   };
