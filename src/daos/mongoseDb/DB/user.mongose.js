@@ -23,14 +23,15 @@ export default class UserMongoDB {
       }
     }
   
-    async login(user) {
+    async login(email, password) {
       try {
-        const {email, password} = user;
-        const userExist = await UserModel.findOne({email, password});
-        if(!userExist) return false;
+        console.log('body', email, password);
+        const userExist = await UserModel.findOne({ email: email, password: password });
+        console.log('login::', userExist);
+        if (!userExist) return false;
         else return userExist;
       } catch (error) {
         console.log(error);
       }
     }
-  }
+}  

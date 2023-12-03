@@ -18,3 +18,14 @@ export const register = async (user) => {
       console.log(error);
     }
   };
+
+
+  export const login = async (email, password) => {
+    try {
+      const user = await userDao.login({ email, password });
+      return user;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+

@@ -1,7 +1,6 @@
 import * as userService from "../service/user.service.js"
 
 
-
 export const getUserMail = async (req, res, next) => {
     try {
         const { mail } = req.params;
@@ -13,8 +12,7 @@ export const getUserMail = async (req, res, next) => {
 };
 
 
-export default class UserController {
-    async register(req, res, next) {
+export const register = async (req, res, next) => {
       console.log(req.body);
       try {
         const user = await userService.register(req.body);
@@ -24,7 +22,8 @@ export default class UserController {
         next(error);
       }
     }
-    async login(req, res, next) {
+
+export const login = async (req, res, next) => {
       try {
         const { email, password } = req.body;
         const user = await userService.login(email, password);
@@ -37,5 +36,5 @@ export default class UserController {
       } catch (error) {
         next(error);
       }
-    }
-  }
+}
+  
