@@ -58,10 +58,8 @@ router.get('/register', async (req, res) => {
 });
 
 router.get('/profile', async (req, res) => {
-        res.render('partials/profile');
-
+    res.render('partials/profile');
 });
-
 
 router.get('/register-error', async (req, res) => {
     res.render('partials/register-error');
