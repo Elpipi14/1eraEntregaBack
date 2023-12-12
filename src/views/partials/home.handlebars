@@ -1,4 +1,9 @@
 <h1 class="title">Products Ecommerce</h1>
+<div>
+        {{#if session.welcomeMessage}}
+        <h1>{{session.welcomeMessage}}</h1>
+        {{/if}}
+</div>
 <div id="home">
     {{#each products}}
     <div class="card vist" style="width: 18rem;">

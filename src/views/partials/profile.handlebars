@@ -21,7 +21,7 @@
                                 <p class="mb-0">Full Name</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{session.user.first_name}} {{session.user.last_name}}</p>
+                                <p class="text-muted mb-0">{{user.first_name}}, {{user.last_name}}</p>
                             </div>
                         </div>
                         <hr>
@@ -30,7 +30,7 @@
                                 <p class="mb-0">Age</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{session.user.age}}</p>
+                                <p class="text-muted mb-0">{{user.age}}</p>
                             </div>
                         </div>
                         <hr>
@@ -39,7 +39,7 @@
                                 <p class="mb-0">Gender</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{session.user.gender}}</p>
+                                <p class="text-muted mb-0">{{user.gender}}</p>
                             </div>
                         </div>
                         <hr>
@@ -48,17 +48,23 @@
                                 <p class="mb-0">Email</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{session.user.email}}</p>
+                                <p class="text-muted mb-0">{{user.email}}</p>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
+
+                        <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Password</p>
                             </div>
-                            <div class="col-sm-9">
-                                <button type="button" class="btn btn-outline-primary ms-1">Change Password</button>
-                            </div>
+                            {{#if isAdmin}}
+                                <div class="col-sm-9">
+                                    <button type="button" class="btn btn-outline-primary ms-1">Change Password</button>
+                                </div>
+                            {{/if}}
+                        </div>
+
                         </div>
                     </div>
                 </div>
